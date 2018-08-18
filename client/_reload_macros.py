@@ -27,7 +27,7 @@ def reload_macros_from_server():
     assert os.path.exists(TO)
 
     print "Starting sync to natlink macro folder"
-    result = sync(FROM, TO, 'update')
+    result = sync(FROM, TO, 'sync')
     print result
 
     # This has to happen before reload_code(), client goes down...
