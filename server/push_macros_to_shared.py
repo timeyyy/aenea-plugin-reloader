@@ -46,9 +46,6 @@ def push_macros_to_shared():
 
     # Will error if code is not 0
     subprocess.check_call(cmd)
-    header = "Aenea Macro Sync"
-    body = "rsync: server -> shared dir finished."
-    notify(header, body)
 
 
 def update_server_plugins():

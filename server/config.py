@@ -50,7 +50,10 @@ XDOTOOL_DELAY = 0
 #FILE_LOG_LEVEL = 'INFO'
 
 
+###########################
 # For aenea-plugin-reloader
+###########################
+
 _shared_folder = "VirtualBox VMs/shared-folder/"
 _macro_directory = "aenea_macros"
 
@@ -61,9 +64,9 @@ APR_CLIENT_MACRO_SRC_PATTERN = ["-L",
                                 "-path",
                                 "*/client/*.*",
                                 "-exec",
-                                "rsync",
-                                "--prune-empty-dirs",
+                                "./rel_rsync.py",
                                 "{}",
+                                "server_plugins.*?client", # ? makes the pattern non greedy
                                 APR_SERVER_SHARED_DIR + "/",
                                 ";"]
 
@@ -73,8 +76,8 @@ APR_SERVER_PLUGIN_SRC_PATTERN = ["-L",
                                  "-path",
                                  "*/server/*.*",
                                  "-exec",
-                                 "rsync",
-                                 "--prune-empty-dirs",
+                                 "./rel_rsync.py",
                                  "{}",
+                                 "server_plugins.*?server",
                                  PLUGIN_PATH[0] + "/",
                                  ";"]

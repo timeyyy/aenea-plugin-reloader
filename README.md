@@ -14,4 +14,6 @@ rel_rsync 'home/client/test/file.py' 'client' 'dest/'
 
 will result in files rsynced to -> dest/test/file.py
 
+Note: 'client' is a python regex pattern
+
 2. on client `pip install dirsync`

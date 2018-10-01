@@ -2,6 +2,7 @@
 
 import subprocess
 import sys
+import re
 
 
 def rsync(file_path_with_rel_symbol, dst):
@@ -22,8 +23,10 @@ def main():
     rel_from = sys.argv[2]
     destination = sys.argv[3]
 
-    after = file_path.index(rel_from) + len(rel_from)
+    match = re.search(rel_from, file_path)
+
     rsync_rel_symbol = "/."
+    after = match.end()
     new_file_path = file_path[:after] + rsync_rel_symbol + file_path[after:]
     rsync(new_file_path, destination)
 
